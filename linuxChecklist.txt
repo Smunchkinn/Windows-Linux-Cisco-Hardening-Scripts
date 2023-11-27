@@ -1,0 +1,240 @@
+1. Remove Unauthorized Users
+  getent passwd {1000..6000}
+  sudo deluser [user]
+
+2. Ensure Correct Administrators
+  /etc/group
+  sudo gpasswd -d [user] sudo
+
+3. Change Insecure Passwords
+  sudo passwd [user]
+#change root password too
+
+4. Creating Users
+  sudo adduser [username]
+
+5. Important Security Updates and Daily Updates
+  "Software & Updates"
+  "Updates"
+  "Install updates from:"
+  "Check When"
+
+6. Secure sshd_config File
+  /etc/ssh/sshd_config
+  LoginGraceTime 60
+  PermitRootLogin=no
+  Protocol 2
+  PermitEmptyPasswords no
+  PasswordAuthentication yes
+  X11Fowarding no
+  UsePAM yes
+  UsePrivilegeSeparation yes
+
+7. Remove Prohibited Files, Services, and Software
+  sudo systemctl list-units --type=service --state=active
+  sudo service --status-all
+  sudo apt list --installed
+  sudo apt purge [package]
+  #maybe do:
+  cd /home
+  sudo ls -Ra *
+  #then look through directories for hacking tools or media files
+
+8. Set Password Complexity Requirements
+  sudo apt-get install libpam-cracklib or sudo install libpam-cracklib
+  /etc/pam.d/common-password
+  password [success=2 default=ignore] pam_unix.so obscure sha512 >> minlen=12
+  #find the line with pam_unix and add:
+  remember=5 #or 10?
+  #find the line with pam.cracklib.so then add:
+  ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1 #do you remove the negatives?
+  /etc/pam.d/system-auth
+  password required pam_cracklib.so retry=2 minlen=12 difok=6 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1 #do you remove the negatives?
+
+9. Secure lightdm.conf File
+  /etc/lightdm/lightdm.conf or /usr/share/lightdm/lightdm.conf/50-ubuntu.conf
+  allow-guest=false
+  greeter0hide-users=true
+  greeter-show-manual-login=true
+  autologin-user=none
+  sudo restart lightdm
+  #Verify by checking /etc/passwd to see which users are:
+  #Uid 0
+  #Can login
+  #allowed in the readme
+
+10. Secure  greeter.dconf-defaults File
+  etc/gdm3/greeter.dconf-defaults
+  Disable-user-list=true
+  Disable-restart-buttons=true
+  AutomaticLoginEnable = false
+
+11. Secure login.defs File
+  /etc/login.defs
+  FAILLOG_ENAB YES
+  LOG_UNKFAIL_ENAB YES
+  SYSLOG_SU_ENAB YES
+  SYSLOG_SG_ENAB YES
+  PASS_MAX_DAYS 90
+  PASS_MIN_DAYS 10 #or 7?
+  PASS_WARN_AGE 7 #or 14?
+
+12. Secure the shadow File
+  chmod 640 /etc/shadow
+
+13. Secure the vsftpd.conf File
+  /etc/vsftpd.conf
+  anonymous_enable=NO
+  local_enable=YES
+  write_enable=YES
+  chroot_local_user=YES
+
+14. Secure the sysctl.conf File
+  /etc/sysctl.conf
+  Sysctl -p #add this to the bottom of the file
+  net.ipv4.conf.all.accept_redirects = 0
+  net.ipv4.ip_forward = 0
+  net.ipv4.conf.all.send_redirects = 0
+  net.ipv4.conf.default.send_redirects = 0
+  net.ipv4.conf.all.rp_filter=1
+  net.ipv4.conf.all.accept_source_route=0
+  net.ipv4.tcp_max_syn_backlog = 2048
+  net.ipv4.tcp_synack_retries = 2
+  net.ipv4.tcp_syn_retries = 5
+  net.ipv4.tcp_syncookies = 1
+  net.ipv6.conf.all.disable_ipv6 = 1
+  net.ipv6.conf.default.disable_ipv6
+  net.ipv6.conf.lo.disable_ipv6
+
+15. Check cronjobs
+  /etc/cron.*
+  /etc/crontab
+  /var/spool/cron/crontabs
+
+16. Check the init Files
+  /etc/init
+  /etc/init.d
+
+17. Check Each User With crontab
+  crontab –u {USER} -l
+
+18. Check sudoers
+  /etc/sudoers or /etc/sudoers.d
+  #Make sure that there are no NOPASSWD values set
+  #Change all of them to ALL=(ALL:ALL) ALL
+
+19. Secure APACHE
+  #Hide Apache Version number
+  /etc/apache2/apache2.conf
+  ServerSignature Off #add to bottom
+  ServerTokens Prod #add to bottom
+  #Make sure Apache is running under its own user account and group
+  #Add a separate user “apache”
+  User apache
+  Group apache
+  #Ensure that file outside the web root directory are not accessed
+  /etc/apache2/apache2.conf
+  Timeout 45
+  <Directory />
+  Order Deny,Allow
+  Dent from all
+  Options -Indexes
+  AllowOverride None
+  </Directory>
+  <Directory /html>
+  Order Allow,Deny
+  Allow from all
+  </Directory>
+  Turn off directory browsing, Follow symbolic links and CGI execution
+  Add Options None to a <Directory /html> tag
+
+20. Install modsecurity #not sure if this is neccessary
+  apt-get install mod_security
+  service httpd restart
+
+21. Secure MySQL
+  #Restrict remote MySQL access
+  #Edit /etc/mysql/my.cnf
+  Bind-address=127.0.0.1
+  #Disable use of LOCAL INFILE
+  #Edit /etc/mysql/my.cnf
+  [mysqld]
+  local-infile=0
+  #Create Application Specific user
+  root@Ubuntu:~# mysql –u root –p
+  mysql> CREATE USER ‘myusr’@’localhost’ IDENTIFIED BY ‘password’;
+  mysql> GRANT SELECT,INSERT,UPDATE,DELETE ON mydb.* TO ‘myusr’@’localhost’ IDENTIFIED BY ‘password’;
+  mysql> FLUSH PRIVILEGES;
+  #Improve Security with mysql_secure-installation
+  root@Ubuntu:~# mysql_secure_installation
+  change the root password?: y
+  Remove anonymous users?: y
+  Disallow root login remotely?: y
+  Remove test database and access to it?: y
+  Reload privilege tables now?: y
+
+22. Secure PHP
+  #Restrict PHP Information Leakage
+  #Edit /etc/php5/apaceh2/php.ini
+  expose_php = off
+  #Disable Remote Code Execution
+  #Edit /etc/php5/apache2/php.ini
+  allow_url_fopen=Off
+  allow_url_include=Off
+  #Disable dangerous PHP Functions
+  #Edit /etc/php5/apache2/php.ini
+  disable_functions=exec,shell_exec,passthru,system,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,proc_open,
+  pcntl_exec
+  #Enable Limits in PHP
+  #Edit /etc/php5/apache2/php.ini
+  upload_max_filesize = 2M
+  max_execution_time = 30
+  max_input_time = 60
+
+23. Create Account Lockout Policy
+  /etc/pam.d/common-auth
+  #find pam_tally2.so and add:
+  deny=5 unlock_time=1800
+
+24. Secure Ports
+  sudo ss -ln
+  #If a port has 127.0.0.1:$port in its line, that means it's connected to loopback and isn't exposed. Otherwise, there
+  #should only be ports which are specified in the readme open (but there probably will be tons more).
+  #For each open port which should be closed:
+sudo lsof -i :$port
+  #Copy the program which is listening on the port. 
+  whereis [program]
+  #Copy where the program is (if there is more than one location, just copy the first one).
+  dpkg -S [location]
+  #This shows which package provides the file (If there is no package, that means you can probably delete it with 
+  #rm [location]; killall -9 [program]). 
+  sudo apt-get purge [package]
+  Check to make sure you aren't accidentally removing critical packages before hitting "y".
+  sudo ss -l #to make sure the port actually closed.
+
+25. Secure network
+  sysctl -n net.ipv4.tcp_syncookies
+  echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf #Disable IPv6 (Potentially harmful); also check what this command even does
+  echo 0 | sudo tee /proc/sys/net/ipv4/ip_forward #Check what this command even does
+  echo "nospoof on" | sudo tee -a /etc/host.conf #Caused penalty last time but check it
+  #manual newtwork inspection 
+  lsof -i -n -P
+	netstat -tulpn
+
+26. Secure Some Files
+	nano /etc/resolv.conf #make sure if safe, use 8.8.8.8 for name server
+	nano /etc/hosts #make sure is not redirecting
+	visudo #make sure sudoers file is clean. There should be no "NOPASSWD"
+
+27. Are Random Commands Not Working? (error: can not open [file name])
+	lsattr [file name]
+	is the file immutable?
+	chattr -i [file name]
+
+28. Check These
+		nano /etc/resolv.conf #make sure if safe, use 8.8.8.8 for name server
+		nano /etc/hosts #make sure is not redirecting
+#NOTE: use this as a secure password if needed: th3CyB3r(g04T!)
+
+#Password configs to consider:
+#difok = 15 dictcheck = 1 enforcing = 1 maxrepeat = 3 minclass = 3 minlen = 15 dcredit = -1 lcredit = -1 ocredit = -1 ucredit = -1

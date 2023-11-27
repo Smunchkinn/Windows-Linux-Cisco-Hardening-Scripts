@@ -1,0 +1,28 @@
+The Checklist
+
+1. Read the read me and take a picture of passwords
+2. Answere the Forensic questions
+3. Use script to edit users
+  -make sure to secure password
+  -fix password policies that script won't change
+  -make any necessary changes read me stayes ex: adding a group
+4. Run the big script
+  - update add and remove apps on read me
+  - check if u got points for stuff on read me if not try to figure it out
+  - run all windows updates/browser updates
+  - make sure the right default browser is being used
+  - Windows key + r 
+      - fsmgmt.msc
+      - Make sure no unauthorized users have shared files
+5. run the hacking tools script
+  - disable/remove stuff it finds
+6. run the media finder script
+  - disable/remove stuff it finds
+  - if it doesn't work download void tools and use it to find files
+7. For Server
+  - use the weird server UI thing and add/remove stuff
+  - ex: SMB 1.x disabled, SMB Compression is disabled, SMB Server-wide encryption is enabled
+8. Scrounge for points
+  -use more advanced chekclist to look for things
+
+
