@@ -221,7 +221,7 @@ ufwFirewall () {
 	ufw deny 111
 	ufw logging high
 	ufw status verbose
- 	sudo ufw reset
+ 	sudo ufw restart
  	echo -e "${LightBlue}Done Configuring UFW${NC}"
 }
 
@@ -338,14 +338,6 @@ updateStuff () {
 	apt-get autoclean -y
 	apt-get check
  	echo -e "${LightBlue}Done Running apt-get Commands${NC}"
-}
-
-#secure config file for sysctl
-	secureSysctl () {
- 	echo -e "${LightBlue}Securing Sysctl${NC}"
-  	#backing up config file
-   	
- 	echo -e "${LightBlue}Securing Sysctl${NC}"
 }
 
 secureConfigs () {
@@ -586,6 +578,9 @@ auditctl -e 1 > /var/local/audit.log
   echo "Don't Forget to Restart" >> /var/local/ASAO.log
   echo "more password stuff @ https://www.cyberciti.biz/tips/linux-check-passwords-against-a-dictionary-attack.html" >> /var/local/ASAO.log
 
+
+
+
 	apt-get install libpam-cracklib -y
 	PAMUNIX="$(grep -n 'pam_unix.so' /etc/pam.d/common-password | grep -v '#' | cut -f1 -d:)"
 	sed -e "${PAMUNIX}s/.*/password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass sha512 remember=5/" /etc/pam.d/common-password > /var/local/temp.txt
@@ -623,10 +618,7 @@ auditctl -e 1 > /var/local/audit.log
   	ps axk start_time -o start_time,pid,user,cmd >> /var/local/pslist.log
 
    	ss -an4 > /var/local/netstat.log
-
-     	apt-get install clamav -y
-      	freshclam
-       	clamscan -r /home
+    
 	echo -e "${LightBlue}Done Securing Random Configs${NC}"
 }
 
@@ -658,19 +650,9 @@ secureSSH () {
 	echo -e "${LightBlue}Done Securing SSH${NC}"
 }
 
-runGoodPrograms () {
-	apt-get install clamav lynis rkhunter chkrootkit synaptic -y
-	apt-get install git
-	git clone https://github.com/rebootuser/LinEnum
-	git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
-	echo -e "${LightBlue}Running rkhunter"
-	rkhunter -c --sk > logs/rkhunter.txt 
-	echo -e "${LightBlue}Running lynis"
-	lynis -c --quick > logs/lynis.txt
- 	chkrootkit -q > logs/chkrootkit.txt
-  	./privilege-escalation-awesome-scripts-suite/linPEAS/linpeas.sh > logs/linpeas.txt
-   	./LinEnum/LinEnum.sh > logs/linenum.txt
-    	
+getGoodPrograms () {
+	apt-get install rkhunter chkrootkit -y
+	echo -e "${LightBlue}installed rkhunter and chrootkit${NC}"
 }
 
 echo -e "${GREEN}--------- Start of Script ---------${NC}"
@@ -683,8 +665,7 @@ zeroUIDUsers
 secureRootCron
 secureFiles
 updateStuff
-secureSysctl
 secureSSH
-runGoodPrograms
+getGoodPrograms
 findMedia
 echo -e "${GREEN}--------- End of Script ---------${NC}"
