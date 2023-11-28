@@ -584,39 +584,10 @@ auditctl -e 1 > /var/local/audit.log
 	sudo cp /etc/sysctl.conf oldSysctl.txt
 
   	touch oldSSHD.txt
-   	sudo cp /
+   	sudo cp /etc/ssh/sshd_config oldSSHD.txt
 
- 
-	PAMUNIX="$(grep -n 'pam_unix.so' /etc/pam.d/common-password | grep -v '#' | cut -f1 -d:)"
-	sed -e "${PAMUNIX}s/.*/password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass sha512 remember=5/" /etc/pam.d/common-password > /var/local/temp.txt
- 	PAMCRACKLIB="$(grep -n 'pam_cracklib.so' /etc/pam.d/common-password | grep -v '#' | cut -f1 -d:)"
-	sed -e "${PAMCRACKLIB}s/.*/password	requisite	pam_cracklib.so retry=3 minlen=8 difok=3 ucredit=-1 1credit=-2 ocredit=-1/" /var/local/temp.txt > /var/local/temp2.txt
-	rm /var/local/temp.txt
-	mv /etc/pam.d/common-password /etc/pam.d/common-password.old
-	mv /var/local/temp2.txt /etc/pam.d/common-password
- 	PASSMAX="$(grep -n 'PASS_MAX_DAYS' /etc/login.defs | grep -v '#' | cut -f1 -d:)"
-	sed -e "${PASSMAX}s/.*/PASS_MAX_DAYS	90/" /etc/login.defs > /var/local/temp1.txt
-	PASSMIN="$(grep -n 'PASS_MIN_DAYS' /etc/login.defs | grep -v '#' | cut -f1 -d:)"
-	sed -e "${PASSMIN}s/.*/PASS_MIN_DAYS	10/" /var/local/temp1.txt > /var/local/temp2.txt
-	PASSWARN="$(grep -n 'PASS_WARN_AGE' /etc/login.defs | grep -v '#' | cut -f1 -d:)"
-	sed -e "${PASSWARN}s/.*/PASS_WARN_AGE	7/" /var/local/temp2.txt > /var/local/temp3.txt
- 	#does this work better?
- 	#cp /etc/login.defs /etc/login.defs1
-	#sed -i "s/PASS_MAX_DAYS	99999/PASS_MAX_DAYS 90/" /etc/login.defs
-	#sed -i "s/PASS_MIN_DAYS	0/PASS_MIN_DAYS 7/" /etc/login.defs
-	#sed -i "s/PASS_WARN_AGE	7/PASS_WARN_AGE 14/" /etc/login.defs
-	mv /etc/login.defs /etc/login.defs.old
-	mv /var/local/temp3.txt /etc/login.defs
-	rm /var/local/temp1.txt /var/local/temp2.txt
-	cp /etc/pam.d/common-auth /etc/pam.d/common-auth.old
-	echo "auth required pam_tally2.so deny=5 onerr=fail unlock_time=1800" >> /etc/pam.d/common-auth
- 	PRL="$(grep -n 'PermitRootLogin' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-	sed -e "${PRL}s/.*/PermitRootLogin no/" /etc/ssh/sshd_config > /var/local/temp1.txt
-	mv /etc/ssh/sshd_config /etc/ssh/sshd_config.old
-	mv /var/local/temp1.txt /etc/ssh/sshd_config
-
- 	cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.old
-	echo "allow-guest=false" >> /etc/lightdm/lightdm.conf
+    	touch oldLightdm.txt
+ 	cp /etc/lightdm/lightdm.conf oldLightdm.txt
 
  	crontab -l >> /var/local/cronjoblist.log
 
