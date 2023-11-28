@@ -578,10 +578,15 @@ auditctl -e 1 > /var/local/audit.log
   echo "Don't Forget to Restart" >> /var/local/ASAO.log
   echo "more password stuff @ https://www.cyberciti.biz/tips/linux-check-passwords-against-a-dictionary-attack.html" >> /var/local/ASAO.log
 
-
-
-
 	apt-get install libpam-cracklib -y
+
+	touch oldSysctl.txt
+	sudo cp /etc/sysctl.conf oldSysctl.txt
+
+  	touch oldSSHD.txt
+   	sudo cp /
+
+ 
 	PAMUNIX="$(grep -n 'pam_unix.so' /etc/pam.d/common-password | grep -v '#' | cut -f1 -d:)"
 	sed -e "${PAMUNIX}s/.*/password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass sha512 remember=5/" /etc/pam.d/common-password > /var/local/temp.txt
  	PAMCRACKLIB="$(grep -n 'pam_cracklib.so' /etc/pam.d/common-password | grep -v '#' | cut -f1 -d:)"
