@@ -231,9 +231,7 @@ sudo lsof -i :$port
 	is the file immutable?
 	chattr -i [file name]
 
-28. Check These
-		nano /etc/resolv.conf #make sure if safe, use 8.8.8.8 for name server
-		nano /etc/hosts #make sure is not redirecting
+
 #NOTE: use this as a secure password if needed: th3CyB3r(g04T!)
 
 #Password configs to consider:
