@@ -145,33 +145,13 @@ portStuff () {
 	sudo iptables -A INPUT -d 203.0.113.0/24 -j DROP
 	sudo iptables -A INPUT -d 224.0.0.0/3 -j DROP
 	sudo iptables -A INPUT -i lo -j ACCEPT
-	#Least Strict Rules
-	#iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-	#Strict Rules -- Only allow well known ports (1-1022)
-	#iptables -A INPUT -p tcp --match multiport --sports 1:1022 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-	#iptables -A INPUT -p udp --match multiport --sports 1:1022 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-	#iptables -A OUTPUT -p tcp --match multiport --dports 1:1022 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-	#iptables -A OUTPUT -p udp --match multiport --dports 1:1022 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-	#iptables -A OUTPUT -o lo -j ACCEPT
-	#iptables -P OUTPUT DROP
-	#Very Strict Rules - Only allow HTTP/HTTPS, NTP and DNS
-	sudo iptables -A INPUT -p tcp --sport 80 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-	sudo iptables -A INPUT -p tcp --sport 443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-	sudo iptables -A INPUT -p tcp --sport 53 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-	sudo iptables -A INPUT -p udp --sport 53 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-	sudo iptables -A OUTPUT -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-	sudo iptables -A OUTPUT -p tcp --dport 443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-	sudo iptables -A OUTPUT -p tcp --dport 53 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-	sudo iptables -A OUTPUT -p udp --dport 53 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-	sudo iptables -A OUTPUT -o lo -j ACCEPT
-	sudo iptables -P OUTPUT DROP
  	echo -e "${LightBlue}Done Running iptables Commands${NC}"
 }
 
 #finds media files
 findMedia () {
 	echo -e "${LightBlue}Listing Media Files${NC}"
- 	echo -e "${Red}-------------------- START --------------------${NC}"
+ 	echo -e "${RED}-------------------- START --------------------${NC}"
     find / -name '*.mp3' 
     find / -name '*.mov' 
     find / -name '*.mp4' 
@@ -187,7 +167,7 @@ findMedia () {
     find /home -name '*.jpg' #might want to run without specified home directory
     find /home -name '*.jpeg' #might want to run without specified home directory
     find /home -name '*.txt' #might want to run without specified home directory
-    echo -e "${Red}--------------------- END ---------------------${NC}"
+    echo -e "${RED}--------------------- END ---------------------${NC}"
     echo -e "${LightBlue}Done Finding Media Files${NC}"
 }
 
@@ -195,7 +175,6 @@ findMedia () {
 ufwFirewall () {
 	echo -e "${LightBlue}Configuring UFW${NC}"
 	sudo apt install ufw
-	sudo ufw reset
 
 	#enable the firewall
 	sudo ufw enable
@@ -242,6 +221,7 @@ ufwFirewall () {
 	ufw deny 111
 	ufw logging high
 	ufw status verbose
+ 	sudo ufw reset
  	echo -e "${LightBlue}Done Configuring UFW${NC}"
 }
 
@@ -310,6 +290,9 @@ secureRootCron () {
 #secures apache configs
 secureApache () {
 	echo -e "${LightBlue}Securing Apache${NC}"
+ 	echo -e "${RED}Is Apache a Critical Servcice? (y/n)${NC}"
+  	read yon2
+   	if [ yon2 == "y" ] ; then
 	a2enmod userdir
 
 	chown -R root:root /etc/apache2
@@ -325,6 +308,7 @@ secureApache () {
 	fi
 
 	systemctl restart apache2.service
+ 	fi
  	echo -e "${LightBlue}Done Securing Apache${NC}"
 }
 
@@ -359,57 +343,8 @@ updateStuff () {
 #secure config file for sysctl
 	secureSysctl () {
  	echo -e "${LightBlue}Securing Sysctl${NC}"
-	rmmod cramfs
-	rmmod freevxfs
-	rmmod jffs2
-	rmmod hfs
-	rmmod hfsplus
-	rmmod udf
-
- 
-	systemctl is-enabled autofs
- 	aideinit
-  	sudo auditctl -e 1
-	sysctl -w net.ipv4.tcp_syncookies=1
-	sysctl -w net.ipv4.ip_forward=0
-	sysctl -w net.ipv4.conf.all.send_redirects=0
-	sysctl -w net.ipv4.conf.default.send_redirects=0
-	sysctl -w net.ipv4.conf.all.accept_redirects=0
-	sysctl -w net.ipv4.conf.default.accept_redirects=0
-	sysctl -w net.ipv4.conf.all.secure_redirects=0
-	sysctl -w net.ipv4.conf.default.secure_redirects=0
- 	sysctl -w net.ipv4.conf.default.rp_filter=1
-   	sysctl -w net.ipv4.conf.all.rp_filter=1
-	sysctl -w net.ipv4.tcp_max_syn_backlog=2048
- 	sysctl -w net.ipv4.tcp_synack_retries=2
-  	sysctl -w net.ipv4.tcp_syn_retries=5
-   	sysctl -w net.ipv6.conf.all.accept_redirects=0
-	sysctl -w net.ipv6.conf.default.accept_redirects=0
- 	sysctl -w net.ipv4.conf.all.accept_source_route=0
-  	sysctl -w net.ipv6.conf.all.accept_source_route=0
-   	sysctl -w net.ipv4.conf.default.accept_source_route=0
-	sysctl -w net.ipv6.conf.default.accept_source_route=0
- 	sysctl -w net.ipv4.conf.all.log_martians=1
-  	sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
-   	sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=1
-   	sysctl -w net.ipv4.icmp_echo_ignore_all=1
-   	sysctl -w kernel.exec-shield=1
-   	sysctl -w kernel.randomize_va_space=1
-   	sysctl -w net.ipv6.conf.all.disable_ipv6=1
-   	sysctl -w net.ipv6.conf.default.disable_ipv6=1
-   	sysctl -w net.ipv6.conf.lo.disable_ipv6=1
-   	sysctl -w net.ipv6.conf.default.router_solicitations=0
-   	sysctl -w net.ipv6.conf.default.accept_ra_rtr_pref=0
-	sysctl -w net.ipv6.conf.default.accept_ra_pinfo=0
-	sysctl -w net.ipv6.conf.default.accept_ra_defrtr=0
- 	sysctl -w net.ipv6.conf.default.autoconf=0
-  	sysctl -w net.ipv6.conf.default.dad_transmits=0
-   	sysctl -w net.ipv6.conf.default.max_addresses=1
-	sysctl -w kernel.randomize_va_space=2
- 	sysctl -w nnet.ipv6.conf.default.accept_ra=0
-  	sysctl -w vm.panic_on_oom=1
-    	sysctl -w kernel.panic=10
-	sysctl -p 
+  	#backing up config file
+   	
  	echo -e "${LightBlue}Securing Sysctl${NC}"
 }
 
