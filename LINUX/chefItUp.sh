@@ -616,12 +616,12 @@ getGoodPrograms () {
 }
 
 echo -e "${GREEN}--------- Start of Script ---------${NC}"
+zeroUIDUsers
 deleteUsers
 verifyAdmins
 changePasswords
 portStuff
 ufwFirewall
-zeroUIDUsers
 secureRootCron
 updateStuff
 secureSSH
