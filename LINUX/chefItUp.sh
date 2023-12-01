@@ -312,22 +312,6 @@ secureApache () {
  	echo -e "${LightBlue}Done Securing Apache${NC}"
 }
 
-#automatically secures certain files
-secureFiles () {
-	echo -e "${LightBlue}Securing Files${NC}"
-	#Replace lightdm.conf with safe reference file
-	cat $PWDthi/referenceFiles/lightdm.conf > /etc/lightdm/lightdm.conf
-
-	#Replace sshd_config with safe reference file
-	cat $PWDthi/referenceFiles/sshd_config > /etc/ssh/sshd_config
-	/usr/sbin/sshd -t
-	systemctl restart sshd.service
-
-	#/etc/rc.local should be empty except for 'exit 0'
-	echo 'exit 0' > /etc/rc.local
-	echo -e "${LightBlue}Done Securing Files${NC}"
-}
-
 #automatically run some updates
 updateStuff () {
 	echo -e "${LightBlue}Running apt-get Commands${NC}"
@@ -639,7 +623,6 @@ portStuff
 ufwFirewall
 zeroUIDUsers
 secureRootCron
-secureFiles
 updateStuff
 secureSSH
 getGoodPrograms
