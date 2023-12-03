@@ -231,21 +231,27 @@ sudo lsof -i :$port
 	is the file immutable?
 	chattr -i [file name]
 
+28. Update bash
+	sudo apt-get autoclean
+	sudo apt-get install --only-upgrade bash
+	sudo apt-get upgrade
+
 28. random stuff
 	disable password login for user bin
-	kernel pointers hidden from unpriveleged users
 	fix insecure sudo configuration
-	server does not allow tcp connections
+	x server does not allow tcp connections
 	grub uses encrypted password protection
 	grub is not world readable
-	update bash
 	remove backdoor (python)
 	remove suid bit from find
-	ssh only listens on port 223
 	ftp local users must login as anonymous
 	ftp anonymous write commands are disabled
 	ftp pasv security checks are enabled
-	
+	previous passwords are remembered
+	default minimum password age is set
+	account lockout policy is configured
+	null passwords do not authenticate
+	fix insecure permissions on ftp root directory
 
 #NOTE: use this as a secure password if needed: th3CyB3r(g04T!)
 
