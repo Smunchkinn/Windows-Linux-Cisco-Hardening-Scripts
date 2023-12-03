@@ -232,7 +232,6 @@ sudo lsof -i :$port
 	chattr -i [file name]
 
 28. random stuff
-	ipv4 timewait assasination enabled
 	disable password login for user bin
 	kernel pointers hidden from unpriveleged users
 	fix insecure sudo configuration
