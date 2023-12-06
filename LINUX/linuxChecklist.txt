@@ -50,6 +50,9 @@
   ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1 #do you remove the negatives?
   /etc/pam.d/system-auth
   password required pam_cracklib.so retry=2 minlen=12 difok=6 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1 #do you remove the negatives?
+  # default pam configuration:
+  password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+  password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
 
 9. Secure lightdm.conf File
   /etc/lightdm/lightdm.conf or /usr/share/lightdm/lightdm.conf/50-ubuntu.conf
@@ -236,8 +239,10 @@ sudo lsof -i :$port
 	sudo apt-get install --only-upgrade bash
 	sudo apt-get upgrade
 
+29. disable password login for the user bin
+	sudo passwd -d bin
+
 28. random stuff
-	disable password login for user bin
 	fix insecure sudo configuration
 	x server does not allow tcp connections
 	grub uses encrypted password protection
