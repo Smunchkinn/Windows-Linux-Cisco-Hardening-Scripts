@@ -258,6 +258,6 @@ sudo lsof -i :$port
 	fix insecure permissions on ftp root directory
 
 #NOTE: use this as a secure password if needed: th3CyB3r(g04T!)
-#NOTE: if a command is broken or a warning output is given by rkhunter on a command, use apt-get install --reinstall $(dpkg -S $(whereis ${command} | awk -F' ' '{print $2}') | awk -F':' '{print $1}') -y     where ${command} eqals the broken command
+#NOTE: if a command is broken or a warning output is given by rkhunter on a command, use apt-get install --reinstall $(dpkg -S $(whereis ${command} | awk -F' ' '{print $2}') | awk -F':' '{print $1}') -y     where ${command} = the broken command
 #Password configs to consider:
 #difok = 15 dictcheck = 1 enforcing = 1 maxrepeat = 3 minclass = 3 minlen = 15 dcredit = -1 lcredit = -1 ocredit = -1 ucredit = -1
