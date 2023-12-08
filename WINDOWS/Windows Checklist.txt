@@ -2,7 +2,7 @@ The Checklist
 
 1. Read the read me and take a picture of passwords
 
-2. Answere the Forensic questions
+2. Answer the Forensic questions
 
 3. Use script to edit users
   -make sure to secure password
