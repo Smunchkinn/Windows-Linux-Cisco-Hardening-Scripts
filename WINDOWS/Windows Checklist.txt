@@ -37,5 +37,6 @@ The Checklist
 
 9. Scrounge for points
   -use more advanced chekclist to look for things and regular checklist to look for things
+  -https://docs.google.com/document/d/1enfukDGqmuEso5IFC6TQbfJirIYRrCgalLZfQmXd4a4/edit
 
 
