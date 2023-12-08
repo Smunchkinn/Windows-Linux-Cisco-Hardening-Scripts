@@ -253,7 +253,6 @@ sudo lsof -i :$port
 	x server does not allow tcp connections
 	grub uses encrypted password protection
 	grub is not world readable
-	remove backdoor (python) find backdoor, Stop the service and then disable it to prevent it from reopening. You should also check cronjobs to make sure that it doesn’t reactivate.
 	ftp local users must login as anonymous
 	ftp anonymous write commands are disabled
 	ftp pasv security checks are enabled
