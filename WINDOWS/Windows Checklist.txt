@@ -37,6 +37,6 @@ The Checklist
   - RUN IT AND FIX THE THINGIES
 
 10. Scrounge for points
-  -use more advanced chekclist to look for things
+  -use more advanced chekclist to look for things and regular checklist to look for things
 
 
