@@ -242,6 +242,12 @@ sudo lsof -i :$port
 29. disable password login for the user bin
 	sudo passwd -d bin
 
+30. Finding and Fixing Backdoors
+	sudo netstat -antp | grep LISTEN
+	unwanted back door? find PID
+	sudo systemctl status PID
+	delete its process
+
 28. random stuff
 	fix insecure sudo configuration
 	x server does not allow tcp connections
