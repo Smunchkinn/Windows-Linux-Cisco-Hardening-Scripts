@@ -40,3 +40,5 @@ The Checklist
   -https://docs.google.com/document/d/1enfukDGqmuEso5IFC6TQbfJirIYRrCgalLZfQmXd4a4/edit
 
 
+Link to fix services that cant be changed: https://stackoverflow.com/questions/4436558/start-stop-a-windows-service-from-a-non-administrator-user-account
+
