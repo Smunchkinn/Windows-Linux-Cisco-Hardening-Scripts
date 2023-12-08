@@ -135,8 +135,6 @@ sc stop remoteRegistry
 sc config remoteRegistry start= disabled
 sc stop SSDPSRV
 sc config SSDPSRV start= disabled
-sc stop W3SVC
-sc config W3SVC start= disabled
 sc stop SNMPTRAP
 sc config SNMPTRAP start= disabled
 sc stop remoteAccess
