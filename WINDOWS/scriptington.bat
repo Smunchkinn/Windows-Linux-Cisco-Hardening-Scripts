@@ -219,8 +219,6 @@ sc stop WerSvc
 sc config WerSvc start= disabled
 sc stop wisvc
 sc config wisvc start= disabled
-sc stop wscsvc
-sc config wscsvc start= disabled
 sc stop WSearch
 sc config WSearch start= disabled
 sc stop XboxGipSvc
