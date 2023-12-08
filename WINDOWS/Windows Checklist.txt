@@ -32,12 +32,14 @@ The Checklist
   - ex: SMB 1.x disabled, SMB Compression is disabled, SMB Server-wide encryption is enabled, IIS HTTPS Binding has been configured
   - look into SQL screen shots in google drive checklist
 
-8. SCAP TOOLS: https://public.cyber.mil/stigs/scap/ 
-  - RUN IT AND FIX THE THINGIES
-
-9. Scrounge for points
+8. Scrounge for points
   -use more advanced chekclist to look for things and regular checklist to look for things
   -https://docs.google.com/document/d/1enfukDGqmuEso5IFC6TQbfJirIYRrCgalLZfQmXd4a4/edit
+
+9. SCAP TOOLS: https://public.cyber.mil/stigs/scap/ 
+  - RUN IT AND FIX THE THINGIES
+
+
 
 
 Link to fix services that cant be changed: https://stackoverflow.com/questions/4436558/start-stop-a-windows-service-from-a-non-administrator-user-account
