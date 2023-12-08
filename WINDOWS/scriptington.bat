@@ -223,8 +223,6 @@ sc stop wscsvc
 sc config wscsvc start= disabled
 sc stop WSearch
 sc config WSearch start= disabled
-sc stop wuauserv
-sc config wuauserv start= disabled
 sc stop XboxGipSvc
 sc config XboxGipSvc start= disabled
 sc stop XblAuthManager
