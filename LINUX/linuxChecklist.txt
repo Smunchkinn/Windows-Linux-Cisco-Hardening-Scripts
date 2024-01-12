@@ -253,11 +253,6 @@ sudo lsof -i :$port
 	x server does not allow tcp connections
 	grub uses encrypted password protection
 	grub is not world readable
-	ftp anonymous write commands are disabled
-	ftp pasv security checks are enabled
-	previous passwords are remembered
-	default minimum password age is set
-	account lockout policy is configured
 	null passwords do not authenticate
 	fix insecure permissions on ftp root directory
 
