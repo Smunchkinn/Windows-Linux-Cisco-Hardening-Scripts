@@ -91,6 +91,8 @@
   local_enable=YES
   write_enable=YES
   chroot_local_user=YES
+  ftp anonymous write commands are disabled?
+  ftp pasv security checks are enabled?
 
 14. Secure the sysctl.conf File
   /etc/sysctl.conf
@@ -195,9 +197,7 @@
   max_input_time = 60
 
 23. Create Account Lockout Policy
-  /etc/pam.d/common-auth
-  #find pam_tally2.so and add:
-  deny=5 unlock_time=1800
+  search it up
 
 24. Secure Ports
   sudo ss -ln
@@ -253,7 +253,6 @@ sudo lsof -i :$port
 	x server does not allow tcp connections
 	grub uses encrypted password protection
 	grub is not world readable
-	ftp local users must login as anonymous
 	ftp anonymous write commands are disabled
 	ftp pasv security checks are enabled
 	previous passwords are remembered
