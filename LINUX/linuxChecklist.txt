@@ -255,6 +255,11 @@ sudo lsof -i :$port
 	grub is not world readable
 	null passwords do not authenticate
 	fix insecure permissions on ftp root directory
+	start apparmour service
+	disable pop3 service
+	remove linuxdcpp
+	remove minetest
+	ftp anonymous user is not root
 
 #NOTE: use this as a secure password if needed: th3CyB3r(g04T!)
 #NOTE: if a command is broken or a warning output is given by rkhunter on a command, use apt-get install --reinstall $(dpkg -S $(whereis ${command} | awk -F' ' '{print $2}') | awk -F':' '{print $1}') -y     where ${command} = the broken command
