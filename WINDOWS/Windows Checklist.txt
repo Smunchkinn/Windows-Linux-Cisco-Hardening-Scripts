@@ -14,7 +14,7 @@ how to use
   - move LGPO.exe
   - open cmd in admin
   - run LGPO.exe /g "path"
-  - gupdate /force ??? (im not sure cuz it didnt need it)
+  - gpupdate /force ??? (im not sure cuz it didnt need it)
 
 4. Use script to edit users
   -make sure to secure password
