@@ -10,6 +10,7 @@ The Checklist
 how to use
   - first dowload both files
   - extract onto desktop
+  - move nessecary gpos onto desktop in own folder
   - move LGPO.exe
   - open cmd in admin
   - run LGPO.exe /g "path"
