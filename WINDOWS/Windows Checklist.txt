@@ -6,8 +6,14 @@ The Checklist
 
 3. Given Policies Scripts
   - public.cyber.mil/stigs/gpo/ 
+  - https://www.microsoft.com/en-us/download/details.aspx?id=55319
 how to use
-  - 
+  - first dowload both files
+  - extract onto desktop
+  - move LGPO.exe
+  - open cmd in admin
+  - run LGPO.exe /g "path"
+  - gupdate /force ??? (im not sure cuz it didnt need it)
 
 4. Use script to edit users
   -make sure to secure password
