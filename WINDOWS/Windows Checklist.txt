@@ -93,3 +93,7 @@ TRY TO EDIT STUFF IN ALL THESE AREAS ASK CHAT GPT COMMON STUFF TO DO TRY TO CHAN
 
 Link to fix services that cant be changed: https://stackoverflow.com/questions/4436558/start-stop-a-windows-service-from-a-non-administrator-user-account
 
+Hacking Tools
+- wire shark
+- nMap
+- John the Ripper
