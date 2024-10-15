@@ -78,6 +78,7 @@ done
 #does random stuff with ports
 portStuff () {
 	echo -e "${LightBlue}Running iptables Commands${NC}"
+ 	#NEED TO SET THE INTERFACE VARIABLE
 	sudo iptables -A INPUT -p tcp -s 0/0 -d 0/0 --dport 23 -j DROP         #Block Telnet
 	sudo iptables -A INPUT -p tcp -s 0/0 -d 0/0 --dport 2049 -j DROP       #Block NFS
 	sudo iptables -A INPUT -p udp -s 0/0 -d 0/0 --dport 2049 -j DROP       #Block NFS
