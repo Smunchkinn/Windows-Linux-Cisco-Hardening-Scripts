@@ -278,7 +278,7 @@ zeroUIDUsers () {
 #changes cron to only permit root access and does other things to secure it
 secureRootCron () {
 	echo -e "${LightBlue}Securing Root Cron${NC}"
-	crontab -r
+	sudo crontab -r
 	cd /etc/
 	/bin/rm -f cron.deny at.deny
 	echo root >cron.allow
