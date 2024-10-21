@@ -8,7 +8,7 @@ The Checklist
   - public.cyber.mil/stigs/gpo/ 
   - https://www.microsoft.com/en-us/download/details.aspx?id=55319
 how to use
-  - first dowload both files
+  - first download both files
   - extract onto desktop
   - move nessecary gpos onto desktop in own folder
   - move LGPO.exe
@@ -16,7 +16,9 @@ how to use
   - run LGPO.exe /g "path"
   - gpupdate /force ??? (im not sure cuz it didnt need it)
 
-4. Use script to edit users
+4.
+
+5. Use script to edit users
   -make sure to secure password
   -fix password policies that script won't change
   -make any necessary changes read me stayes ex: adding a group
@@ -29,7 +31,7 @@ how to use
       - and anything else looking suspicious
     - U can change directories and where users are in here make sure everyone is in correct group
 
-5. Run the big script
+6. Run the big script
   - update add and remove apps on read me
   - make sure fire wall is working
   - run all windows updates/browser updates
@@ -39,18 +41,18 @@ how to use
       - Make sure no unauthorized users have shared files
   - check if u got points for stuff on read me if not try to figure it out
 
-6. run the hacking tools script
+7. run the hacking tools script
   - disable/remove stuff it finds
   - use netstat -anob and check for backdoors
   - download and run malwarebytes to look for viruses
   - run windows defender to look for insecurities
 
-7. run the media finder script
+8. run the media finder script
   - disable/remove stuff it finds
   - if it doesn't work download void tools and use it to find files ex: .*png
   - then scrounge for hidden files yourself
 
-8. For Server
+9. For Server
   
 Server manager
     - edit features
@@ -81,7 +83,7 @@ Internet Information Services
 
 TRY TO EDIT STUFF IN ALL THESE AREAS ASK CHAT GPT COMMON STUFF TO DO TRY TO CHANGE ANYTHING :))))))))
 
-9. Scrounge for points
+10. Scrounge for points
   - use more advanced chekclist to look for things and regular checklist to look for things
     - https://docs.google.com/document/d/1enfukDGqmuEso5IFC6TQbfJirIYRrCgalLZfQmXd4a4/edit
   - use server VM notes which includes KAC slides
