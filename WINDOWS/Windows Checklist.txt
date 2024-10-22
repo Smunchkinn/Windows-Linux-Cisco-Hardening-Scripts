@@ -48,6 +48,9 @@ how to use
   - run windows defender to look for insecurities
 
 8. run the media finder script
+  - on gang we should just run some powershell commands like this one gang 
+  - Get-ChildItem -Path C:\Users\*\Pictures -Include *.jpg, *.jpeg, *.png, *.gif, *.bmp -Recurse -Force -ErrorAction SilentlyContinue
+  - WOOOOOOHOOOOOOOOOOO
   - disable/remove stuff it finds
   - if it doesn't work download void tools and use it to find files ex: .*png
   - then scrounge for hidden files yourself
