@@ -153,21 +153,21 @@ portStuff () {
 findMedia () {
 	echo -e "${LightBlue}Listing Media Files${NC}"
  	echo -e "${RED}-------------------- START --------------------${NC}"
-    find / -name '*.mp3' 
-    find / -name '*.mov' 
-    find / -name '*.mp4' 
-    find / -name '*.avi' 
-    find / -name '*.mpg' 
-    find / -name '*.mpeg' 
-    find / -name '*.flac' 
-    find / -name '*.m4a' 
-    find / -name '*.flv' 
-    find / -name '*.ogg' 
-    find /home -name '*.gif' #might want to run without specified home directory
-    find /home -name '*.png' #might want to run without specified home directory
-    find /home -name '*.jpg' #might want to run without specified home directory
-    find /home -name '*.jpeg' #might want to run without specified home directory
-    find /home -name '*.txt' #might want to run without specified home directory
+    sudo find / -name '*.mp3' 
+    sudo find / -name '*.mov' 
+    sudo find / -name '*.mp4' 
+    sudo find / -name '*.avi' 
+    sudo find / -name '*.mpg' 
+    sudo find / -name '*.mpeg' 
+    sudo find / -name '*.flac' 
+    sudo find / -name '*.m4a' 
+    sudo find / -name '*.flv' 
+    sudo find / -name '*.ogg' 
+    sudo find /home -name '*.gif' #might want to run without specified home directory
+    sudo find /home -name '*.png' #might want to run without specified home directory
+    sudo find /home -name '*.jpg' #might want to run without specified home directory
+    sudo find /home -name '*.jpeg' #might want to run without specified home directory
+    sudo find /home -name '*.txt' #might want to run without specified home directory
     echo -e "${RED}--------------------- END ---------------------${NC}"
     echo -e "${LightBlue}Done Finding Media Files${NC}"
 }
