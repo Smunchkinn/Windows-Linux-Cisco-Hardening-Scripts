@@ -629,3 +629,8 @@ secureSSH
 getGoodPrograms
 findMedia
 echo -e "${GREEN}--------- End of Script ---------${NC}"
+#consider automating the securing of config files with commands like this:
+#sudo apt-get install -y libpam-faillock
+#sudo sed -i '/auth.*pam_unix.so/ s/$/ auth required pam_faillock.so preauth silent deny=5 unlock_time=600/' /etc/pam.d/common-auth
+#sudo systemctl restart authentication-required.service
+#or a different method involving pasting configs to the top of a config file
