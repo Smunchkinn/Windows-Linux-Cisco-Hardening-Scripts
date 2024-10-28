@@ -1,3 +1,4 @@
+-DONE BY SCRIPT-
 1. Remove Unauthorized Users
   getent passwd {1000..6000}
   sudo deluser [user]
@@ -13,6 +14,7 @@
 4. Creating Users
   sudo adduser [username]
 
+-MOST IMPORTANT-
 5. Important Security Updates and Daily Updates
   "Software & Updates"
   "Updates"
@@ -45,16 +47,31 @@
   /etc/pam.d/common-password
   password [success=2 default=ignore] pam_unix.so obscure sha512 >> minlen=12
   #find the line with pam_unix and add:
-  remember=5 #or 10?
+  remember=5
   #find the line with pam.cracklib.so then add:
-  ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1 #do you remove the negatives?
+  ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+  #not too sure what this stuff below is
   /etc/pam.d/system-auth
-  password required pam_cracklib.so retry=2 minlen=12 difok=6 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1 #do you remove the negatives?
-  # default pam configuration:
-  password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
-  password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
+  password required pam_cracklib.so retry=2 minlen=12 difok=6 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
 
-9. Secure lightdm.conf File
+9. Secure login.defs File
+  /etc/login.defs
+  FAILLOG_ENAB YES
+  LOG_UNKFAIL_ENAB YES
+  SYSLOG_SU_ENAB YES
+  SYSLOG_SG_ENAB YES
+  PASS_MAX_DAYS 90
+  PASS_MIN_DAYS 10 #or 7?
+  PASS_WARN_AGE 7 #or 14?
+
+-EXTRA CONFIGURATIONS-
+10. Secure  greeter.dconf-defaults File
+  etc/gdm3/greeter.dconf-defaults
+  Disable-user-list=true
+  Disable-restart-buttons=true
+  AutomaticLoginEnable = false
+
+11. Secure lightdm.conf File
   /etc/lightdm/lightdm.conf or /usr/share/lightdm/lightdm.conf/50-ubuntu.conf
   allow-guest=false
   greeter0hide-users=true
@@ -65,22 +82,6 @@
   #Uid 0
   #Can login
   #allowed in the readme
-
-10. Secure  greeter.dconf-defaults File
-  etc/gdm3/greeter.dconf-defaults
-  Disable-user-list=true
-  Disable-restart-buttons=true
-  AutomaticLoginEnable = false
-
-11. Secure login.defs File
-  /etc/login.defs
-  FAILLOG_ENAB YES
-  LOG_UNKFAIL_ENAB YES
-  SYSLOG_SU_ENAB YES
-  SYSLOG_SG_ENAB YES
-  PASS_MAX_DAYS 90
-  PASS_MIN_DAYS 10 #or 7?
-  PASS_WARN_AGE 7 #or 14?
 
 12. Secure the shadow File
   chmod 640 /etc/shadow
@@ -197,7 +198,9 @@
   max_input_time = 60
 
 23. Create Account Lockout Policy
-  search it up
+  sudo apt-get install libpam-faillock
+  sudo nano /etc/pam.d/common-auth
+  auth required pam_faillock.so preauth silent deny=5 unlock_time=600
 
 24. Secure Ports
   sudo ss -ln
