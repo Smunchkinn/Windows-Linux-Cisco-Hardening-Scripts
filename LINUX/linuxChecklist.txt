@@ -49,10 +49,7 @@
   #find the line with pam_unix and add:
   remember=5
   #find the line with pam.cracklib.so then add:
-  ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
-  #not too sure what this stuff below is
-  /etc/pam.d/system-auth
-  password required pam_cracklib.so retry=2 minlen=12 difok=6 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+  minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
 
 9. Secure login.defs File
   /etc/login.defs
@@ -61,8 +58,8 @@
   SYSLOG_SU_ENAB YES
   SYSLOG_SG_ENAB YES
   PASS_MAX_DAYS 90
-  PASS_MIN_DAYS 10 #or 7?
-  PASS_WARN_AGE 7 #or 14?
+  PASS_MIN_DAYS 7
+  PASS_WARN_AGE 7
 
 -EXTRA CONFIGURATIONS-
 10. Secure  greeter.dconf-defaults File
@@ -198,9 +195,11 @@
   max_input_time = 60
 
 23. Create Account Lockout Policy
-  sudo apt-get install libpam-faillock
-  sudo nano /etc/pam.d/common-auth
-  auth required pam_faillock.so preauth silent deny=5 unlock_time=600
+  sudo nano /etc/pam.d/common-account
+  account required pam_faillock.so
+  account required pam_unix.so
+  account sufficient pam_faillock.so
+  #to test, use sudo faillock
 
 24. Secure Ports
   sudo ss -ln
@@ -251,7 +250,27 @@
 	sudo systemctl status PID
 	delete its process
 
-28. random stuff
+31. Session Management (common-session)
+  #not necessary I believe because I do not think it can be graded by the client
+  sudo nano /etc/pam.d/common-session
+  session required pam_unix.so
+  session optional pam_exec.so
+  /usr/local/bin/inactivity_timeout.sh
+  #^ make your own timeout script
+
+32. Disable Console Root Login
+  sudo nano /etc/pam.d/common-auth
+  auth required pam_securetty.so
+
+33. Authentication Configuration (common-auth)
+  sudo nano /etc/pam.d/common-auth
+  auth required pam_faillock.so preauth silent deny=3 unlock_time=900 fail_interval=900
+  auth [success=1 default=bad] pam_unix.so
+  auth [default=die] pam_faillock.so authfail deny=3 unlock+time=900 fail_interval=900
+  auth sufficient pam_faillock.so authsucc
+  #remove nullok
+
+???. random stuff
 	fix insecure sudo configuration
 	x server does not allow tcp connections
 	grub uses encrypted password protection
