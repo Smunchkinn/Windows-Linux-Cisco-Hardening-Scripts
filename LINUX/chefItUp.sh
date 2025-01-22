@@ -341,10 +341,6 @@ chown root:root /etc/cron.monthly
 chmod og-rwx /etc/cron.monthly
 chown root:root /etc/cron.d
 chmod og-rwx /etc/cron.d
-rm /etc/cron.deny
-rm /etc/at.deny
-touch /etc/cron.allow
-touch /etc/at.allow
 chmod og-rwx /etc/cron.allow
 chmod og-rwx /etc/at.allow
 chown root:root /etc/cron.allow
