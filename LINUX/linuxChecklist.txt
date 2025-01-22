@@ -277,6 +277,12 @@
   sudo apt fullupgrade
   sudo updatedb
 
+35. Auditd
+  Apt-get install auditd
+  Auditctl -e 1
+  Nano /etc/audit/auditd.conf
+  “AUDIT STATUS: enabled=1 flag=1 pid=4229 rate_limit=0 backlog_limit=320 lost=50 backlog=0”su
+
 ???. random stuff
 	fix insecure sudo configuration
 	x server does not allow tcp connections
