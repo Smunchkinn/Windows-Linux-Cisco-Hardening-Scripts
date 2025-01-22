@@ -102,3 +102,6 @@ Hacking Tools
 - wire shark
 - nMap
 - John the Ripper
+
+
+keep track of common ports that might pop up
