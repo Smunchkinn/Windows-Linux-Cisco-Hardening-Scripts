@@ -271,7 +271,7 @@
   #remove nullok
 
 34. Updates and Packages
-  nano /etc/apt/sources.list
+  nano /etc/apt/sources.list #check if this matches official sources.list for the distribution
   sudo apt update
   sudo apt fullupgrade
   sudo updatedb
