@@ -270,6 +270,11 @@
   auth sufficient pam_faillock.so authsucc
   #remove nullok
 
+34. Updates
+  sudo apt update
+  sudo apt fullupgrade
+  sudo updatedb
+
 ???. random stuff
 	fix insecure sudo configuration
 	x server does not allow tcp connections
@@ -287,4 +292,3 @@
 #NOTE: if a command is broken or a warning output is given by rkhunter on a command, use apt-get install --reinstall $(dpkg -S $(whereis ${command} | awk -F' ' '{print $2}') | awk -F':' '{print $1}') -y     where ${command} = the broken command
 #Password configs to consider:
 #difok = 15 dictcheck = 1 enforcing = 1 maxrepeat = 3 minclass = 3 minlen = 15 dcredit = -1 lcredit = -1 ocredit = -1 ucredit = -1
-#SCAP compliance checker: https://public.cyber.mil/stigs/scap/
