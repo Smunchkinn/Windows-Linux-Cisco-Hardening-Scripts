@@ -622,6 +622,7 @@ ufwFirewall
 secureRootCron
 updateStuff
 secureSSH
+secureApache
 getGoodPrograms
 findMedia
 echo -e "${GREEN}--------- End of Script ---------${NC}"
