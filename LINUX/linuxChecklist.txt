@@ -120,6 +120,7 @@
 
 17. Check Each User With crontab
   crontab –u {USER} -l
+  sudo crontab -e
 
 18. Check sudoers
   /etc/sudoers or /etc/sudoers.d
