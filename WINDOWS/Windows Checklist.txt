@@ -105,3 +105,4 @@ Hacking Tools
 
 
 keep track of common ports that might pop up
+Common Ports: 21 (FTP), 22 (SSH), 23 (Telnet), 25 (SMTP), 53 (DNS), 67 (DHCP), 80 (HTTP), 110 (P0P3), 161 (SNMP), 389 (LDAP), 443 (HTTPS), 465 (SMTPS), 3389 (RDP)
