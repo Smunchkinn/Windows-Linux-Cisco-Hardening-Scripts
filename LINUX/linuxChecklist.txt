@@ -270,7 +270,8 @@
   auth sufficient pam_faillock.so authsucc
   #remove nullok
 
-34. Updates
+34. Updates and Packages
+  nano /etc/apt/sources.list
   sudo apt update
   sudo apt fullupgrade
   sudo updatedb
