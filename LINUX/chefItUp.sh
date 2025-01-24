@@ -619,6 +619,7 @@ verifyAdmins
 changePasswords
 portStuff
 ufwFirewall
+secureConfigs
 secureRootCron
 updateStuff
 secureSSH
