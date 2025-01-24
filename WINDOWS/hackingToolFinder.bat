@@ -34,3 +34,21 @@ findstr "Shellter" programfiles.flashed
 if %errorlevel%==0 (
 echo Potential Shellter detected. Please take note, then press any key.
 pause >NUL
+)
+cls
+findstr "Wire Shark" programfiles.flashed
+if %errorlevel%==0 (
+echo Potential Shellter detected. Please take note, then press any key.
+pause >NUL
+)
+cls
+findstr "nMap" programfiles.flashed
+if %errorlevel%==0 (
+echo Potential Shellter detected. Please take note, then press any key.
+pause >NUL
+)
+cls
+findstr "John The Ripper" programfiles.flashed
+if %errorlevel%==0 (
+echo Potential Shellter detected. Please take note, then press any key.
+pause >NUL
