@@ -329,82 +329,82 @@ secureConfigs () {
 echo -e "${LightBlue}Securing Random Configs${NC}"
 sudo chown root:root //boot/grub/grub.cfg
 sudo chmod 700 //boot/grub/grub.cfg
-chown root:root /etc/crontab
-chmod og-rwx /etc/crontab
-chown root:root /etc/cron.hourly
-chmod og-rwx /etc/cron.hourly
-chown root:root /etc/cron.daily
-chmod og-rwx /etc/cron.daily
-chown root:root /etc/cron.weekly
-chmod og-rwx /etc/cron.weekly
-chown root:root /etc/cron.monthly
-chmod og-rwx /etc/cron.monthly
-chown root:root /etc/cron.d
-chmod og-rwx /etc/cron.d
-chmod og-rwx /etc/cron.allow
-chmod og-rwx /etc/at.allow
-chown root:root /etc/cron.allow
-chown root:root /etc/at.allow
-chown root:root //etc/passwd
-chmod 700 //etc/passwd
-chown root:shadow //etc/shadow
-chmod o-rwx,g-wx //etc/shadow
-chown root:root //etc/group
-chmod 700 //etc/group
-chown root:shadow //etc/gshadow
-chmod o-rwx,g-rw //etc/gshadow
-chown root:root //etc/passwd-
-chmod u-x,go-wx //etc/passwd-
-chown root:root //etc/shadow-
-chown root:shadow //etc/shadow-
-chmod o-rwx,g-rw //etc/shadow-
-chown root:root //etc/group-
-chmod u-x,go-wx //etc/group-
-chown root:root //etc/gshadow-
-chown root:shadow /etc/gshadow-    
-chmod o-rwx,g-rw //etc/gshadow-
-chown root:root //etc/motd
-chmod 700 //etc/motd
-chown root:root //etc/issue
-chmod 700 //etc/issue
-chown root:root //etc/issue.net
-chmod 700 //etc/issue.net
-chown root:root //etc/hosts.allow
-chmod 700 //etc/hosts.allow
-chown root:root //etc/hosts.deny
-chmod 700 //etc/hosts.deny
+sudo chown root:root /etc/crontab
+sudo chmod og-rwx /etc/crontab
+sudo chown root:root /etc/cron.hourly
+sudo chmod og-rwx /etc/cron.hourly
+sudo chown root:root /etc/cron.daily
+sudo chmod og-rwx /etc/cron.daily
+sudo chown root:root /etc/cron.weekly
+sudo chmod og-rwx /etc/cron.weekly
+sudo chown root:root /etc/cron.monthly
+sudo chmod og-rwx /etc/cron.monthly
+sudo chown root:root /etc/cron.d
+sudo chmod og-rwx /etc/cron.d
+sudo chmod og-rwx /etc/cron.allow
+sudo chmod og-rwx /etc/at.allow
+sudo chown root:root /etc/cron.allow
+sudo chown root:root /etc/at.allow
+sudo chown root:root //etc/passwd
+sudo chmod 700 //etc/passwd
+sudo chown root:shadow //etc/shadow
+sudo chmod o-rwx,g-wx //etc/shadow
+sudo chown root:root //etc/group
+sudo chmod 700 //etc/group
+sudo chown root:shadow //etc/gshadow
+sudo chmod o-rwx,g-rw //etc/gshadow
+sudo chown root:root //etc/passwd-
+sudo chmod u-x,go-wx //etc/passwd-
+sudo chown root:root //etc/shadow-
+sudo chown root:shadow //etc/shadow-
+sudo chmod o-rwx,g-rw //etc/shadow-
+sudo chown root:root //etc/group-
+sudo chmod u-x,go-wx //etc/group-
+sudo chown root:root //etc/gshadow-
+sudo chown root:shadow /etc/gshadow-    
+sudo chmod o-rwx,g-rw //etc/gshadow-
+sudo chown root:root //etc/motd
+sudo chmod 700 //etc/motd
+sudo chown root:root //etc/issue
+sudo chmod 700 //etc/issue
+sudo chown root:root //etc/issue.net
+sudo chmod 700 //etc/issue.net
+sudo chown root:root //etc/hosts.allow
+sudo chmod 700 //etc/hosts.allow
+sudo chown root:root //etc/hosts.deny
+sudo chmod 700 //etc/hosts.deny
 sudo chmod 700 //etc/pam.d/common-auth
-chown root:root /etc/securetty
-chmod 0600 /etc/securetty
-chmod 644 /etc/crontab
-chmod 640 /etc/ftpusers
-chmod 440 /etc/inetd.conf
-chmod 440 /etc/xinted.conf
-chmod 400 /etc/inetd.d
-chmod 440 /etc/sudoers
-chmod 600 /etc/shadow
-chown root:root /etc/shadow
-chmod 644 /etc/passwd
-chown root:root /etc/passwd
-chmod 644 /etc/group
-chown root:root /etc/group
-chmod 600 /etc/gshadow
-chown root:root /etc/gshadow
-chmod 700 /boot
-chown root:root /etc/anacrontab
-chmod 600 /etc/anacrontab
-chown root:root /etc/crontab
-chmod 600 /etc/crontab
-chown root:root /etc/cron.hourly
-chmod 600 /etc/cron.hourly
-chown root:root /etc/cron.daily
-chmod 600 /etc/cron.daily
-chown root:root /etc/cron.weekly
-chmod 600 /etc/cron.weekly
-chown root:root /etc/cron.monthly
-chmod 600 /etc/cron.monthly
-chown root:root /etc/cron.d
-chmod 600 /etc/cron.d
+sudo chown root:root /etc/securetty
+sudo chmod 600 /etc/securetty
+sudo chmod 644 /etc/crontab
+sudo chmod 640 /etc/ftpusers
+sudo chmod 440 /etc/inetd.conf
+sudo chmod 440 /etc/xinted.conf
+sudo chmod 400 /etc/inetd.d
+sudo chmod 440 /etc/sudoers
+sudo chmod 600 /etc/shadow
+sudo chown root:root /etc/shadow
+sudo chmod 644 /etc/passwd
+sudo chown root:root /etc/passwd
+sudo chmod 644 /etc/group
+sudo chown root:root /etc/group
+sudo chmod 600 /etc/gshadow
+sudo chown root:root /etc/gshadow
+sudo chmod 700 /boot
+sudo chown root:root /etc/anacrontab
+sudo chmod 600 /etc/anacrontab
+sudo chown root:root /etc/crontab
+sudo chmod 600 /etc/crontab
+sudo chown root:root /etc/cron.hourly
+sudo chmod 600 /etc/cron.hourly
+sudo chown root:root /etc/cron.daily
+sudo chmod 600 /etc/cron.daily
+sudo chown root:root /etc/cron.weekly
+sudo chmod 600 /etc/cron.weekly
+sudo chown root:root /etc/cron.monthly
+sudo chmod 600 /etc/cron.monthly
+sudo chown root:root /etc/cron.d
+sudo chmod 600 /etc/cron.d
 
 sudo chmod 702 //etc/host.conf
 echo "order bind,hosts" >> //etc/host.conf
@@ -542,39 +542,39 @@ sudo chmod 777 //etc/bashrc
 echo "TMOUT=600" >> //etc/bashrc
 sudo chmod 700 //etc/bashrc
 
-apt-get install auditd -y
-auditctl -e 1 > /var/local/audit.log
+#apt-get install auditd -y
+#auditctl -e 1 > /var/local/audit.log
 
-  echo "creating /var/local"
-  mkdir /var/local/
-  echo "creating log files in /var/local"
-  echo -n "" > /var/local/netstat.log
-  echo -n "" > /var/local/ASAO.log
-  echo -n "" > /var/local/mediafiles.log
-  echo -n "" > /var/local/cronjoblist.log
-  echo -n "" > /var/local/pslist.log
-  echo "adding instructions to log file"
-  echo "getent group <groupname> |||| Users in group" >> /var/local/ASAO.log
-  echo "edit /etc/audit/auditd.conf" >> /var/local/ASAO.log
-  echo "Don't Forget to Restart" >> /var/local/ASAO.log
-  echo "more password stuff @ https://www.cyberciti.biz/tips/linux-check-passwords-against-a-dictionary-attack.html" >> /var/local/ASAO.log
+#  echo "creating /var/local"
+#  mkdir /var/local/
+#  echo "creating log files in /var/local"
+#  echo -n "" > /var/local/netstat.log
+#  echo -n "" > /var/local/ASAO.log
+#  echo -n "" > /var/local/mediafiles.log
+#  echo -n "" > /var/local/cronjoblist.log
+#  echo -n "" > /var/local/pslist.log
+#  echo "adding instructions to log file"
+#  echo "getent group <groupname> |||| Users in group" >> /var/local/ASAO.log
+#  echo "edit /etc/audit/auditd.conf" >> /var/local/ASAO.log
+#  echo "Don't Forget to Restart" >> /var/local/ASAO.log
+#  echo "more password stuff @ https://www.cyberciti.biz/tips/linux-check-passwords-against-a-dictionary-attack.html" >> /var/local/ASAO.log
 
-	apt-get install libpam-cracklib -y
+#	apt-get install libpam-cracklib -y
 
-	touch oldSysctl.txt
-	sudo cp /etc/sysctl.conf oldSysctl.txt
+#	touch oldSysctl.txt
+#	sudo cp /etc/sysctl.conf oldSysctl.txt
 
-  	touch oldSSHD.txt
-   	sudo cp /etc/ssh/sshd_config oldSSHD.txt
+#  	touch oldSSHD.txt
+#   	sudo cp /etc/ssh/sshd_config oldSSHD.txt
 
-    	touch oldLightdm.txt
- 	cp /etc/lightdm/lightdm.conf oldLightdm.txt
+#    	touch oldLightdm.txt
+# 	cp /etc/lightdm/lightdm.conf oldLightdm.txt
 
- 	crontab -l >> /var/local/cronjoblist.log
+# 	crontab -l >> /var/local/cronjoblist.log
 
-  	ps axk start_time -o start_time,pid,user,cmd >> /var/local/pslist.log
+#  	ps axk start_time -o start_time,pid,user,cmd >> /var/local/pslist.log
 
-   	ss -an4 > /var/local/netstat.log
+#   	ss -an4 > /var/local/netstat.log
     
 	echo -e "${LightBlue}Done Securing Random Configs${NC}"
 }
