@@ -1,5 +1,4 @@
 #! /bin/bash
-
 #colors for output customization
 RED='\033[0;31m'
 LightBlue='\033[1;34m'
