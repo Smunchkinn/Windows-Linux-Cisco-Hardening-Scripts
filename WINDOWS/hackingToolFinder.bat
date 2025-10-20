@@ -1,5 +1,4 @@
 @echo off
-
 findstr "Cain" programfiles.flashed
 if %errorlevel%==0 (
 echo Cain detected. Please take note, then press any key.
