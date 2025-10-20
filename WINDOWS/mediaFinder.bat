@@ -1,5 +1,4 @@
 @echo off
-
 echo Finding media files in C:\Users and/or C:\Documents and Settings...
 findstr .mp3 users.flashed >NUL
 if %errorlevel%==0 where /r c:\Users\ *.mp3 > media_audio
