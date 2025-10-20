@@ -1,3 +1,2 @@
-# Minh-Dynasty-Loot
-Materials for the Cyber Patriot Competition
-
+# Windows+Linux+Cisco Hardening Scripts
+Former CyberPatriot competition materials adapted for a basic cybersecurity programs and setings.
