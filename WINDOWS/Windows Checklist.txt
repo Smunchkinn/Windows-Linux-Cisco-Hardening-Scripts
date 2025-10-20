@@ -1,8 +1,4 @@
-The Checklist
-
-1. Read the read me and take a picture of passwords
-
-2. Answer the Forensic questions
+Basic Security Checklist
 
 3. Given Policies Scripts
   - public.cyber.mil/stigs/gpo/ 
