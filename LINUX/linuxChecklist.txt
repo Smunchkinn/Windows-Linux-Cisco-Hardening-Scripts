@@ -3,6 +3,7 @@
   getent passwd {1000..6000}
   sudo deluser [user]
 
+
 2. Ensure Correct Administrators
   /etc/group
   sudo gpasswd -d [user] sudo
