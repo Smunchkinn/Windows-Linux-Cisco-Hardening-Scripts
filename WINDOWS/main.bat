@@ -24,7 +24,6 @@ echo "         |  $$$$$$/                                        |  $$$$$$/  "
 echo "          \______/                                          \______/   "
 
 pause
-
 REM Account Policies
 
 REM Password Policy
