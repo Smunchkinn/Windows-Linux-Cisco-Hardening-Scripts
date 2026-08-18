@@ -26,11 +26,12 @@ echo "          \______/                                          \______/   "
 pause
 REM Account Policies
 
-REM Password Policy
 net accounts /uniquepw:5
-net accounts /maxpwage:30
-net accounts /minpwage:10
-net accounts /minpwlen:10
+net accounts /maxpwage:90
+net accounts /minpwage:30
+net accounts /minpwlen:12
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PasswordComplexity" /t REG_DWORD /d 1 /f
+
 
 REM Account Lockout Policy
 net accounts  /lockoutduration:30
